@@ -46,8 +46,8 @@ const ItemsContainer = (props: Props) => {
     page22=page;
       push(`/ShowPage/${page}`);
     }
-  function ShowDetiles (key:string){
-    push(`/detiles/${key}`);
+  function ShowDetiles (key:string,media:string){
+    push(`/detiles/${media}/${key}`);
    }
   return (
     <>

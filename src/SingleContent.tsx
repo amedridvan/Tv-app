@@ -15,9 +15,8 @@ interface props{
 
 const SingleContent = (items:props) => {
   const { push } = useRouter();
-  function ShowDetiles (key:string, movie:string){
-    push(`/detiles/${key}`)
-    //window.open(`http://localhost:3000/detiles/${key}`)
+  function ShowDetiles (key:string,media:string){
+    push(`/detiles/${media}/${key}`);
    }
   const ImageURL =  items.poster ? img_300 + items.poster : unavailable;
   return (
