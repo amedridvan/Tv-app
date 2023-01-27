@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import {img_300 ,unavailable} from "./confing /confing"
+import {img_300 ,unavailable} from "./confing"
+import { useRouter } from "next/router";
 import Badge from '@mui/material/Badge';
 interface props{
     id:string,
@@ -8,16 +9,23 @@ interface props{
     title:string,
     data:string,
     media_type:string,
-    vote_average:string
+    vote_average:number,
+   
 }
+
 const SingleContent = (items:props) => {
+  const { push } = useRouter();
+  function ShowDetiles (key:string, movie:string){
+    push(`/detiles/${key}`)
+    //window.open(`http://localhost:3000/detiles/${key}`)
+   }
   const ImageURL =  items.poster ? img_300 + items.poster : unavailable;
   return (
     <>
-    < Badge badgeContent={items.vote_average} color={ items.vote_average > 6 ? `secondary`:`primary`} />
-    <div key={items.id} className="flex flex-col w-[46%] md:w-[23%] p-1 mx-0 my-1 bg-slate-900  relative rounded-xl font-serif
+    <div onClick={()=> ShowDetiles(items.id ,items.media_type)} key={items.id} className="flex flex-col w-[46%] md:w-[23%] p-1 mx-0 my-1 bg-slate-900  relative rounded-xl font-serif
     hover:bg-white hover:text-black  
     ">
+      < Badge badgeContent={items.vote_average} color={ items.vote_average > 6 ? `primary`:`secondary`} />
       <Image className="rounded-[10px]"
       alt={items.title}
       src={ImageURL} 

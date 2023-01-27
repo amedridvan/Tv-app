@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import Header from "@/layouts/Header/Header";
 import MainContainer from "@/pages/components/MainContainer";
-import Footer from "../layouts/footer/Footer";
+import Footer from "../../layouts/footer/Footer";
 import ItemsContainer from "@/pages/components/ItemsContainer";
 import { BrowserRouter } from "react-router-dom";
 import { GetServerSideProps } from "next";
@@ -28,20 +28,20 @@ export default function Home(props: Props) {
       </Head>
       <Header />
       <MainContainer />
-      <ItemsContainer items={items}  />
+      <ItemsContainer items={items}   />
       <Footer />
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {} = context;
+export const getServerSideProps: GetServerSideProps = async ({params}) => {
+
   const { data: res  } = await axios.get(
-    `https://api.themoviedb.org/3/trending/all/day?api_key=c76f21405a6fbe2e74354773617a04b8&`
+    `https://api.themoviedb.org/3/trending/all/day?api_key=c76f21405a6fbe2e74354773617a04b8&page=${params.pageno}`
   );
 
   //console.log("data :>>", res);
-  console.log(context)
+
   return {
     props: {
       items: await res.results,
