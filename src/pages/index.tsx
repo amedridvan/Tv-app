@@ -27,7 +27,6 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <MainContainer />
       <ItemsContainer items={items}  />
       <Footer />
     </>

@@ -1,11 +1,17 @@
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import React from 'react'
-import {img_300 ,img_500 ,unavailable} from "../../../confing"
+import {img_300  ,img_500 ,unavailable} from "../../../confing"
 import { Button } from "@mui/material";
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import AliceCarousel from "react-alice-carousel";
-import { EffectCoverflow, Pagination, Swiper } from "swiper";
+import CottageIcon from '@mui/icons-material/Cottage';
+import Image from "next/image"; 
+import { useKeenSlider } from "keen-slider/react"
+import "keen-slider/keen-slider.min.css"
+import "../../../styles/Home.module.css" 
+import Footer from "../../../layouts/footer/Footer"
+
+// Import Swiper styles
 
 interface Props {
   items: []; 
@@ -14,87 +20,96 @@ interface Props {
 }
 
 const Detiles = ( props:Props) => {
-  const responsive = {
-    0: {
-      items: 3,
-    },
-    512: {
-      items: 5,
-    },
-    1024: {
-      items: 7,
-    },
-  };
-  const handleDragStart = (e) => e.preventDefault();
+  const handleDragStart = (e :any) => e.preventDefault()
   const items = props.items
   const vidLink = props.vidLink
   const casts =props.casts
-
-  console.log('casts', casts)
-
-
-  console.log('vidLink', vidLink)
-  const ImageURL2 =  items.backdrop_path ? img_500 + items.backdrop_path: unavailable;
+  
+  const animation = { duration: 10000, easing: (t: number) => t }
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    renderMode: "performance",
+    drag: false,
+    created(s) {
+      s.moveToIdx(5, true, animation)
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs + 5, true, animation)
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs + 5, true, animation)
+    },
+  })
+  const ImageURL2 =  items.backdrop_path ? img_500 + items.backdrop_path: unavailable
   return (
-    <>
-   {items && ( <div style={{
-     scrollbarWidth :"none"
-   }} 
-   className='bg-gray-600 flex flex-col justify-between h-[100%] w-[100%] overflow-y-scroll 
-    '>
-      {
-            <>
-            <img className='rounded-xl object-contain w-full h-full'
+      <> 
+   <div  className="flex flex-col md:flex-row  justify-between  ">
+           <div className="md:w-[40%] flex justify-center items-center  "  >
+            <Image className=' w-full h-full'
             alt="a"
-            src={ImageURL2} />
-            <div className='flex flex-col p-[10p] w-[95%] h-[90%] font-serif justify-evenly font-semibold   '>
-              <span className='flex justify-center items-center h-[12%] text-xl pb-3 '>
-                {items.name || items.title}
-                (
-                  {( items.first_air_date || items.release_date || "-----").substring(0,4)}
-                )
-              </span> 
-              <i className='text-center pb-3'> {items.tagline}</i> 
-              <span  style={{
-                scrollbarWidth : "thin"
-              }} className='flex h-[40%] overflow-y-scroll p-[15px] rounded-3xl shadow-black shadow-lg text-justify m-6 '>
-                    {items.overview}
+            src={ImageURL2}
+            width={300}
+            height={400} />
+               </div> 
+               <div className='flex flex-col w-[full] md:w-[58%] md:h-[40%] '>
+               <div className='bg-slate-600 w-full  flex flex-col justify-center items-center mb-10 '>
+                  <span className="text-xl text-white hover:text-yellow-700 font-bold font-sans  md:text-4xl  ">
+                    {items.name || items.title} (
+                    {(
+                      items.first_air_date ||
+                      items.release_date ||  
+                      "-----"
+                    ).substring(0, 4)}
+                    )
                   </span>
-                  <div>
-           
+                  {items.tagline && (
+                    <i  className="text-xl text-white hover:text-blue-900 font-bold font-sans  md:text-4xl">{items.tagline}</i>
+                  )}
+
+                  <textarea  rows="8" cols="50" className="h-[40%] w-full bg-black text-white font-bold text-xl md:text-2xl 
+                  p-4 mt-5 ">
+                    {items.overview}
+                  </textarea>
                   </div>
-        <div>   
-        <h2>Co-Star Informations</h2>
-        
-        {casts.map((item: any) => {
-          return <div>
-            < img src={`${img_500}${item.profile_path}`} alt="" />
-          </div>
-        } )}   
-        </div> 
-      
-            <Button className='ml-8'
-             variant="contained"
-             startIcon={<YouTubeIcon />}
-             color="secondary"
-             target="__blank"
-              href= {`https://www.youtube.com/watch?v=${vidLink}`}
+              <div ref={sliderRef} className="keen-slider">
+          {casts.map((item, idx) => (
+          
+           <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx}`}   >
+            <div className='flex flex-col justify-center items-center '>
+          <img className=" rounded-[50%]  border-pink-600 border-solid border-b-0 border-l-0 border-[10px]  " 
+           src={item.profile_path ? `${img_300}/${item.profile_path}` : unavailable} />
+           <b className="text-2xl font-sans font-bold  ">{item?.name}</b>
+           </div>
+           </div>
+            ))}
+           </div>
+              
+              <div className='mt-8   md:h-[10%] flex justify-center items-center'>
+              <Button className=' w-full mb-3 '
+                variant="contained"
+                startIcon={<YouTubeIcon />}
+                color="secondary"
+                target="__blank"
+                href={`https://www.youtube.com/watch?v=${vidLink}`}
               > watch video </Button>
-              <Button className='ml-8 mt-4'
-             variant="contained"
-             startIcon={<YouTubeIcon />}
-             color="primary"
-             target="_self"
-              href= "/"
-              > Back to main </Button>
-            </div>
-             
-            </>
-      }
-    </div>)}
+              </div> 
+              </div>
+              
+      </div>
+      <Button className='w-full mb-3  '
+                variant="contained"
+                startIcon={<CottageIcon />}
+                color="primary"
+                target="_self"
+                href="/"
+              > Back to home </Button>
+              <Footer />
+      
     </>
+    
   )
 }
+
 
 
 export const getServerSideProps: GetServerSideProps = async ({params}) => {
@@ -123,3 +138,5 @@ const { data: res  } = await axios.get(
 };
 
 export default Detiles
+
+

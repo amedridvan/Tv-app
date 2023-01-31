@@ -11,9 +11,9 @@ export const getStaticProps: GetServerSideProps = async (context) => {
   const {
     query: { pageno},
   } = context;
-  console.log("pageno :>>", pageno);
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/trending/all/day?api_key=c76f21405a6fbe2e74354773617a04b8&page=${pageno}`
+
+    `https://api.themoviedb.org/3/discover/movie?api_key=c76f21405a6fbe2e74354773617a04b8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageno}`
   );
 
   //console.log("data :>>", data);
@@ -72,7 +72,7 @@ const ItemsContainer = (props: Props) => {
         })}
       </div>
       <Pagination
-        onChange={(e) =>app(e.target.textContent)}
+        onChange={(e:any ) =>app(e.target.textContent)}
         className="flex justify-center items-center bg-white "
         count={1000}
         color="secondary"
