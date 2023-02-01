@@ -27,16 +27,14 @@ interface Props1 {
 const ItemsContainer = (props: Props) => {
   const { items } = props;
   const { push } = useRouter();
-
-
   const [content, setContent] = useState([]);
-
+  const [data, setdata] = useState([]);
     const [genres, setGenres] = useState([]);
     const [selectedGenres, setSelectedGenres] = useState([]);
 
     const [pageno, setPageno] = useState(1)
     const [paginationno, setPaginationno] = useState(0)
-    const API_KEY = process.env.REACT_APP_NOT_SECRET_CODE;
+    
 
     
     const genreforURL = useGenre(selectedGenres)
@@ -45,7 +43,9 @@ const ItemsContainer = (props: Props) => {
         
         const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=c76f21405a6fbe2e74354773617a04b8&page=${pageno}&with_genres=&language=en-US&with_genres=${genreforURL}`)
         setContent(data.results);
+        setPageno(data.page)
         setPaginationno(data.total_pages);
+        setdata(data)
     }
 
     useEffect(()=>{
@@ -64,10 +64,12 @@ const ItemsContainer = (props: Props) => {
     }
     useEffect(()=>{
         console.log('Trending Component didupdate mount');
+        console.log('data', data)
         GetDataTrending();
         //eslint-disable-next-line
     }, [pageno])
-  function app(page:string) {
+  function app(page :any) {
+     setPageno(page)
       push(`/ShowPage/${page}`);
     }
   function ShowDetiles (key:string,media:string){
@@ -77,10 +79,10 @@ const ItemsContainer = (props: Props) => {
    
   return (
     <>
-      <h1 className="text-3xl text-center font-bold uppercase font-sans mb-4 hover:text-green-900 ">
+      <h1 className="text-3xl text-white text-center font-bold uppercase font-sans mb-4 hover:text-green-900 bg-gray-900 ">
         movie
       </h1>
-      <Genres
+      <Genres 
         type="movie"
         selectedGenres={selectedGenres}
         setSelectedGenres={setSelectedGenres}
@@ -89,8 +91,9 @@ const ItemsContainer = (props: Props) => {
         setPage={setPageno}
       />
       <div 
-      className="flex flex-row flex-wrap justify-around "
-      >
+      className="flex flex-row flex-wrap justify-around bg-gray-900"
+      > 
+
         {content?.map(function (item: any) {
           return ( 
             <SingleContent 
@@ -107,9 +110,10 @@ const ItemsContainer = (props: Props) => {
       </div>
       <Pagination
         onChange={(e:any ) =>app(e.target.textContent)}
-        className="flex justify-center items-center bg-white "
+        className="flex justify-center items-center bg-gray-600 "
         count={paginationno}
-        color="secondary"
+        color="primary"
+       
       />
     </>
   );

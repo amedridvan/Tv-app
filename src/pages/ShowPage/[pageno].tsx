@@ -1,13 +1,12 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Header from "@/layouts/Header/Header";
-import MainContainer from "@/pages/components/MainContainer";
 import Footer from "../../layouts/footer/Footer";
 import ItemsContainer from "@/pages/components/ItemsContainer";
-import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useState } from "react";
 import useGenre from "@/hooks/[gener]";
+import React, { useEffect } from "react";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,20 +15,55 @@ interface Props {
   items: [] ;
   page :number ;
   pages:number ;
-  gener :[];
+  geners :[];
 }
 
 export default function Home(props: Props) {
-  const gener=props.gener
+  const [content, setContent] = useState([]);
+
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
-  const genreforURL = useGenre(selectedGenres);
+
+  const [pageno, setPageno] = useState(1)
+  const [paginationno, setPaginationno] = useState(0)
   
+
+  
+  const genreforURL = useGenre(selectedGenres)
+
+  const GetDataTrending = async ()=>{
+      
+      const {data} = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=c76f21405a6fbe2e74354773617a04b8&page=${pageno}&with_genres=&language=en-US&
+      with_genres=${genreforURL}`)
+      setContent(data.results);
+      setPageno(data.page)
+      setPaginationno(data.total_pages);
+      console.log('data.results', data)
+  }
+
+  useEffect(()=>{
+      console.log('Trending Component did mount');
+      GetDataTrending();
+      
+
+      //eslint-disable-next-line
+  }, [])
+
+  useEffect(()=>{
+      GetDataTrending();
+      //eslint-disable-next-line
+  }, [pageno, genreforURL])
+
+  const handleClick = (number :any)=>{
+      setPageno(number);
+  }
+  useEffect(()=>{
+      console.log('Trending Component didupdate mount');
+      GetDataTrending();
+      //eslint-disable-next-line
+  }, [pageno])
   // console.log(selectedGenres);
-  const {items } = props
-  const page=props.page
-  const pages=props.pages
-  console.log('pages :>> ', pages);
+
   return (
     <>
       <Head>
@@ -39,26 +73,9 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <ItemsContainer items={items} page={page} pages={pages} gener={gener}      />
+      <ItemsContainer items={content} page={pageno} pages={paginationno} gener={genreforURL}      />
       <Footer />
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({params }) => {
-
-  const { data: res  } = await axios.get(
-  `https://api.themoviedb.org/3/discover/movie?api_key=c76f21405a6fbe2e74354773617a04b8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${params.pageno}
-   `
-  );
- console.log();
-  //console.log("data :>>", res);
-
-  return {
-    props: {
-      items: await res.results,
-      pageno: await res.page ,
-      pages:await res.total_pages
-    },
-  };
-};

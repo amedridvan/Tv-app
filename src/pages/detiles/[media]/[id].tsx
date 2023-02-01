@@ -43,18 +43,19 @@ const Detiles = ( props:Props) => {
     },
   })
   const ImageURL2 =  items.backdrop_path ? img_500 + items.backdrop_path: unavailable
-  return (
+  return ( 
       <> 
-   <div  className="flex flex-col md:flex-row  justify-between p-[20px]  ">
-           <div className="md:w-[40%] flex justify-center items-center  "  >
-            <Image className=' w-full h-full'
+   <div  className="flex flex-col md:flex-row  justify-between p-[20px] bg-slate-900  ">
+           <div className="md:w-[40%] flex justify-center items-center mb-2  "  >
+            <Image className=' w-full h-full rounded-[5%]  '
             alt="a"
             src={ImageURL2}
             width={300}
             height={400} />
                </div> 
-               <div className='flex flex-col w-[full] md:w-[58%] md:h-[40%] '>
-               <div className='bg-slate-600 w-full  flex flex-col justify-center items-center mb-10 '>
+               <div className='flex flex-col w-full md:w-[58%] md:h-[40%] justify-center items-center   '>
+               <div className='bg-slate-600 w-full  flex flex-col justify-center items-center mb-10 rounded-[10px] 
+                  '>
                   <span className="text-xl text-white hover:text-yellow-700 font-bold font-sans  md:text-4xl  ">
                     {items.name || items.title} (
                     {(
@@ -65,11 +66,12 @@ const Detiles = ( props:Props) => {
                     )
                   </span>
                   {items.tagline && (
-                    <i  className="text-xl text-white hover:text-blue-900 font-bold font-sans  md:text-4xl">{items.tagline}</i>
+                    <i  className="text-xs text-white hover:text-blue-900 font-bold font-sans  md:text-xl">{items.tagline}</i>
                   )}
 
-                  <textarea  rows="8" cols="50" className="h-[40%] w-full bg-black text-white font-bold text-xl md:text-2xl 
-                  p-4 mt-5 ">
+                  <textarea rows="8" cols="50" 
+                  className="h-[40%] w-full bg-gray-700 text-white font-bold text-xl md:text-2xl  rounded-[10px]
+                  p-4 mt-5  ">
                     {items.overview}
                   </textarea>
                   </div>
@@ -78,7 +80,7 @@ const Detiles = ( props:Props) => {
           
            <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx}`}   >
             <div className='flex flex-col justify-center items-center '>
-          <img className=" rounded-[50%]  border-pink-600 border-solid border-b-0 border-l-0 border-[10px]  " 
+          <img className=" rounded-[50%]   border-pink-600 border-solid border-b-0 border-l-0 border-[10px]  " 
            src={item.profile_path ? `${img_300}/${item.profile_path}` : unavailable} />
            <b className="text-2xl font-sans font-bold  ">{item?.name}</b>
            </div>
@@ -86,8 +88,8 @@ const Detiles = ( props:Props) => {
             ))}
            </div>
               
-              <div className='mt-8   md:h-[10%] flex justify-center items-center'>
-              <Button className=' w-full mb-3 '
+              <div className='mt-8   md:h-[12%] w-full flex justify-center items-center'>
+              <Button className=' w-full mb-3 ' 
                 variant="contained"
                 startIcon={<YouTubeIcon />}
                 color="secondary"
@@ -98,7 +100,7 @@ const Detiles = ( props:Props) => {
               </div>
               
       </div>
-      <Button className='w-full mb-3  '
+      <Button className='w-full mt-2 mb-2 flex justify-center items-center  '
                 variant="contained"
                 startIcon={<CottageIcon />}
                 color="primary"

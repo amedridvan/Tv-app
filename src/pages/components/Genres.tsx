@@ -42,10 +42,10 @@ const Genres = ({
 
   return (
     <>
-    <div className="flex flex-row justify-center items-center flex-wrap " style={{ padding: "6px 0" }}>
+    <div className="flex flex-row justify-center items-center flex-wrap bg-slate-800" style={{ padding: "6px 0" }}>
       {selectedGenres.map((genre) => (
         <div
-        className='bg-blue-700 rounded-full p-2 cursor-pointer  hover:bg-pink-700  '
+        className='bg-stone-100 rounded-full p-2 cursor-pointer  hover:bg-pink-700  '
           style={{ margin: 2 }}
           key={genre.id}
           onClick={() => handleRemove(genre)}
@@ -54,7 +54,7 @@ const Genres = ({
         </div>
       ))}
       {genres.map((genre) => (
-        <div className='bg-red-500 rounded-full  p-2 cursor-pointer hover:bg-green-500'
+        <div className='bg-slate-600 rounded-full  p-2 cursor-pointer hover:bg-green-500'
           style={{ margin: 2 }}
           key={genre.id}
           onClick={() => handleAdd(genre)}

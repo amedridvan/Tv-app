@@ -9,7 +9,9 @@ const Header = () => {
   return (
     <>
     <div>
-     <h1 onClick={ ()=> window.scroll(0,0)} className="w-full h-10px bg-orange-500 text-center mb-[10px] uppercase font-bold text-4xl  hover:text-black  z-10">tv app for teaching</h1>
+     <h1 onClick={ ()=> window.scroll(0,0)} className="w-full h-100px bg-gray-600 text-white text-center mb-[10px] uppercase font-bold text-4xl
+       hover:text-green-400 hover:cursor-pointer  z-10 flex justify-center items-center p-3 "
+     >🎬 tv app  🎥</h1>
      </div>
     </>
   )
