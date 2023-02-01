@@ -46,6 +46,7 @@ const Detiles = ( props:Props) => {
   return ( 
       <> 
    <div  className="flex flex-col md:flex-row  justify-between p-[20px] bg-slate-900  ">
+           <div className='w-full flex flex-row'>
            <div className="md:w-[40%] flex justify-center items-center mb-2  "  >
             <Image className=' w-full h-full rounded-[5%]  '
             alt="a"
@@ -53,7 +54,7 @@ const Detiles = ( props:Props) => {
             width={300}
             height={400} />
                </div> 
-               <div className='flex flex-col w-full md:w-[58%] md:h-[40%] justify-center items-center   '>
+               
                <div className='bg-slate-600 w-full  flex flex-col justify-center items-center mb-10 rounded-[10px] 
                   '>
                   <span className="text-xl text-white hover:text-yellow-700 font-bold font-sans  md:text-4xl  ">
@@ -71,11 +72,14 @@ const Detiles = ( props:Props) => {
 
                   <textarea rows="8" cols="50" 
                   className="h-[40%] w-full bg-gray-700 text-white font-bold text-xl md:text-2xl  rounded-[10px]
-                  p-4 mt-5  ">
+                  p-4 mt-5  overflow-hidden ">
                     {items.overview}
                   </textarea>
                   </div>
-              <div ref={sliderRef} className="keen-slider">
+            </div>
+
+            </div>
+             <div ref={sliderRef} className="keen-slider">
           {casts.map((item, idx) => (
           
            <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx}`}   >
@@ -97,9 +101,6 @@ const Detiles = ( props:Props) => {
                 href={`https://www.youtube.com/watch?v=${vidLink}`}
               > watch video </Button>
               </div> 
-              </div>
-              
-      </div>
       <Button className='w-full mt-2 mb-2 flex justify-center items-center  '
                 variant="contained"
                 startIcon={<CottageIcon />}
