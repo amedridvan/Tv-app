@@ -17,6 +17,7 @@ interface Props {
   items: []; 
   vidLink :string;
   casts: [];
+  pages:string
 }
 
 const Detiles = ( props:Props) => {
@@ -24,6 +25,7 @@ const Detiles = ( props:Props) => {
   const items = props.items
   const vidLink = props.vidLink
   const casts =props.casts
+  const pages=props.pages
   
   const animation = { duration: 10000, easing: (t: number) => t }
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
@@ -43,7 +45,7 @@ const Detiles = ( props:Props) => {
   const ImageURL2 =  items.backdrop_path ? img_500 + items.backdrop_path: unavailable
   return (
       <> 
-   <div  className="flex flex-col md:flex-row  justify-between  ">
+   <div  className="flex flex-col md:flex-row  justify-between p-[20px]  ">
            <div className="md:w-[40%] flex justify-center items-center  "  >
             <Image className=' w-full h-full'
             alt="a"
