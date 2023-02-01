@@ -10,6 +10,7 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "../../../styles/Home.module.css" 
 import Footer from "../../../layouts/footer/Footer"
+import Header from "@/layouts/Header/Header";
 
 // Import Swiper styles
 
@@ -21,7 +22,6 @@ interface Props {
 }
 
 const Detiles = ( props:Props) => {
-  const handleDragStart = (e :any) => e.preventDefault()
   const items = props.items
   const vidLink = props.vidLink
   const casts =props.casts
@@ -45,9 +45,10 @@ const Detiles = ( props:Props) => {
   const ImageURL2 =  items.backdrop_path ? img_500 + items.backdrop_path: unavailable
   return ( 
       <> 
-   <div  className="flex flex-col md:flex-row  justify-between p-[20px] bg-slate-900  ">
-           <div className='w-full flex flex-row'>
-           <div className="md:w-[40%] flex justify-center items-center mb-2  "  >
+      <Header />
+   <div  className="flex flex-col md:flex-row  p-[20px] bg-slate-900  ">
+           <div className=' flex w-full md:flex-row flex-col'>
+           <div className="md:w-[40%] flex justify-center items-center mb-2 "  >
             <Image className=' w-full h-full rounded-[5%]  '
             alt="a"
             src={ImageURL2}
@@ -55,9 +56,10 @@ const Detiles = ( props:Props) => {
             height={400} />
                </div> 
                
-               <div className='bg-slate-600 w-full  flex flex-col justify-center items-center mb-10 rounded-[10px] 
-                  '>
-                  <span className="text-xl text-white hover:text-yellow-700 font-bold font-sans  md:text-4xl  ">
+               <div className='bg-slate-600 w-full md:w-[50%]  flex flex-col justify-center items-center mb-10 rounded-[10px] 
+                md:ml-10 h-full  '>
+                  <span className="text-xl text-white hover:text-yellow-700 font-bold font-sans  md:text-4xl 
+                  md:font-bold md:text-black ">
                     {items.name || items.title} (
                     {(
                       items.first_air_date ||
@@ -67,12 +69,12 @@ const Detiles = ( props:Props) => {
                     )
                   </span>
                   {items.tagline && (
-                    <i  className="text-xs text-white hover:text-blue-900 font-bold font-sans  md:text-xl">{items.tagline}</i>
+                    <i  className="text-xs text-white hover:text-blue-900 font-bold font-sans  md:text-xl  md:font-bold md:text-black">{items.tagline}</i>
                   )}
 
                   <textarea rows="8" cols="50" 
                   className="h-[40%] w-full bg-gray-700 text-white font-bold text-xl md:text-2xl  rounded-[10px]
-                  p-4 mt-5  overflow-hidden ">
+                  p-4 mt-5  overflow-hidden  md:font-bold md:text-black">
                     {items.overview}
                   </textarea>
                   </div>
@@ -84,7 +86,8 @@ const Detiles = ( props:Props) => {
           
            <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx}`}   >
             <div className='flex flex-col justify-center items-center '>
-          <img className=" rounded-[50%]   border-pink-600 border-solid border-b-0 border-l-0 border-[10px]  " 
+          <img className=" rounded-[50%]   border-pink-600 border-solid border-b-0 border-l-0 border-[5px] 
+          w-[150px] h-[150px] md:w-[350px] md:w-[300px] md:border-[10px] md:border-b-0 md:border-l-0  " 
            src={item.profile_path ? `${img_300}/${item.profile_path}` : unavailable} />
            <b className="text-2xl font-sans font-bold  ">{item?.name}</b>
            </div>
