@@ -92,7 +92,7 @@ const Detiles = ( props:Props) => {
                <div className='bg-slate-600 w-full md:w-[40%]  flex flex-col justify-center items-center mb-10 rounded-[10px] 
                 md:ml-10 h-full  '>
                   <span className="text-xl text-white hover:text-yellow-700 font-bold font-sans  md:text-4xl 
-                  md:font-bold  ">
+                  md:font-bold p-3  ">
                     {items.name || items.title} (
                     {(
                       items.first_air_date ||
@@ -102,7 +102,7 @@ const Detiles = ( props:Props) => {
                     )
                   </span>
                   {items.tagline && (
-                    <i  className="text-xs text-white hover:text-blue-900 font-bold font-sans  md:text-xl  md:font-bold ">{items.tagline}</i>
+                    <i  className="text-xs p-3 text-white hover:text-blue-900 font-bold font-sans  md:text-xl  md:font-bold ">{items.tagline}</i>
                   )}
 
                   <textarea rows={8} cols={50} 

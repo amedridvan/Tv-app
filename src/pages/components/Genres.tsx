@@ -3,13 +3,13 @@ import { useEffect } from "react";
 
 
 const Genres = ( {
-  selectedGenres ,
   setSelectedGenres ,
-  genres,
   setGenres,
+  selectedGenres  ,
   type,
   setPage,
-} :any) => {
+  genres ,
+} :any  ) => {
   const handleAdd = (genre :any) => {
     setSelectedGenres([...selectedGenres, genre]);
     setGenres(genres.filter((g: { id: any; }) => g.id !== genre.id));
