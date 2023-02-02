@@ -138,14 +138,14 @@ const Detiles = ( props:Props) => {
             ))}
            </div>
           <div className='mt-8   md:h-[12%] w-full flex justify-center items-center flex-col  p-3'>
-              <Button className=' w-full mb-3 ' 
+              <Button className=' w-full my-2 ' 
                 variant="contained"
                 startIcon={<YouTubeIcon />}
                 color="secondary"
                 target="__blank"
                 href={`https://www.youtube.com/watch?v=${vidLink}`}
               > watch video </Button>
-      <Button className='w-full mt-2 mb-2 flex justify-center items-center  '
+      <Button className='w-full my-2 flex justify-center items-center  '
                 variant="contained"
                 startIcon={<CottageIcon />}
                 color="primary"
