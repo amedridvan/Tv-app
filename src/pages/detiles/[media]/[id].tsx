@@ -39,7 +39,6 @@ const Detiles = ( props:Props) => {
   const casts =props.casts
   const pages=props.pages
   const ImageURL2 =items.backdrop_path ? img_500 + items.backdrop_path: unavailable
-  const animation = { duration: 20000, easing: (t: number) => t }
   const [sliderRef] = useKeenSlider<HTMLDivElement>(
     {
       loop: true,
@@ -114,15 +113,17 @@ const Detiles = ( props:Props) => {
             </div>
               
             </div>
-              <h1 className=' text-center font-bold text-3xl font-sans uppercase my-3 hover:text-yellow-100 md:text-6xl '>actors</h1>
+               
+              <h1 className=' text-center font-bold text-3xl font-sans uppercase my-3
+               hover:text-yellow-100 md:text-6xl '>actors</h1>
              <div ref={sliderRef} className="keen-slider">
           {casts.map((item :{
             id :string;
             profile_path :string;
             name:string ;
           }, idx) => (
-          
-           <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx}`}   >
+            
+           <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx} `}   >
             <div className='flex flex-col justify-center items-center p-3  '>
           <Image className=" rounded-[50%]  border-pink-600 border-solid border-b-0 border-l-0 border-[5px] 
           w-[150px] h-[150px] md:h-[350px] md:w-[300px] md:border-[10px] md:border-b-0 md:border-l-0 
@@ -136,8 +137,7 @@ const Detiles = ( props:Props) => {
            </div>
             ))}
            </div>
-              
-              <div className='mt-8   md:h-[12%] w-full flex justify-center items-center'>
+          <div className='mt-8   md:h-[12%] w-full flex justify-center items-center flex-col  p-3'>
               <Button className=' w-full mb-3 ' 
                 variant="contained"
                 startIcon={<YouTubeIcon />}
@@ -145,7 +145,6 @@ const Detiles = ( props:Props) => {
                 target="__blank"
                 href={`https://www.youtube.com/watch?v=${vidLink}`}
               > watch video </Button>
-              </div> 
       <Button className='w-full mt-2 mb-2 flex justify-center items-center  '
                 variant="contained"
                 startIcon={<CottageIcon />}
@@ -153,6 +152,7 @@ const Detiles = ( props:Props) => {
                 target="_self"
                 href="/"
               > Back to home </Button>
+              </div> 
               <Footer />
       
     </>
