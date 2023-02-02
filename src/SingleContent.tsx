@@ -32,8 +32,8 @@ const SingleContent = (items:props) => {
       src={ImageURL} 
       width={400}
       height={300}/>
-     <b className="w-full text-center text-xl py-[8px] px-0 "> {items.title}</b>
-     <span className="flex justify-between pb-[3px] pt-0  py-0 "> {items.media_type}
+     <b className="w-full text-center text-xl py-[8px] px-0 text-sky-500 "> {items.title}</b>
+     <span className="flex justify-between pb-[3px] pt-0  py-0 text-yellow-400 "> {items.media_type}
       <span>{items.data}</span>
       </span>
       </div>

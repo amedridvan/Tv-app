@@ -10,15 +10,15 @@ const Genres = ({
   type,
   setPage,
 }) => {
-  const handleAdd = (genre) => {
+  const handleAdd = (genre :any) => {
     setSelectedGenres([...selectedGenres, genre]);
-    setGenres(genres.filter((g) => g.id !== genre.id));
+    setGenres(genres.filter((g: { id: any; }) => g.id !== genre.id));
     setPage(1);
   };
 
-  const handleRemove = (genre) => {
+  const handleRemove = (genre :any) => {
     setSelectedGenres(
-      selectedGenres.filter((selected) => selected.id !== genre.id)
+      selectedGenres.filter((selected: { id: any; }) => selected.id !== genre.id)
     );
     setGenres([...genres, genre]);
     setPage(1);
@@ -42,10 +42,10 @@ const Genres = ({
 
   return (
     <>
-    <div className="flex flex-row justify-center items-center flex-wrap bg-slate-800 rounded-md mb-2">
-      {selectedGenres.map((genre) => (
+    <div className="flex flex-row justify-center items-center flex-wrap bg-slate-900 rounded-md mb-2">
+      {selectedGenres.map((genre :any) => (
         <div
-        className='bg-stone-100 rounded-full p-2 cursor-pointer  hover:bg-pink-700  '
+        className='bg-stone-500  rounded-full p-2 cursor-pointer  hover:bg-pink-700  '
           style={{ margin: 2 }}
           key={genre.id}
           onClick={() => handleRemove(genre)}
@@ -53,11 +53,11 @@ const Genres = ({
         {genre.name}
         </div>
       ))}
-      {genres.map((genre) => (
-        <div className='bg-slate-600 rounded-full  p-2 cursor-pointer hover:bg-green-500'
+      {genres.map((genre :any) => (
+        <div className='bg-stone-100 rounded-full  p-2 cursor-pointer hover:bg-green-500'
           style={{ margin: 2 }}
           key={genre.id}
-          onClick={() => handleAdd(genre)}
+          onClick={() => handleAdd(genre )}
         >
         {genre.name}
         </div>
