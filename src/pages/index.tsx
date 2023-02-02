@@ -4,7 +4,7 @@ import { Inter } from "@next/font/google";
 import Header from "@/layouts/Header/Header";
 import useGenre from "@/hooks/[gener]";
 import Footer from "../layouts/footer/Footer";
-import ItemsContainer from "@/pages/components/ItemsContainer";
+import ItemsContainer from "@/pages/components/ItemsContainer/ItemsContainer";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useState } from "react";

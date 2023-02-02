@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Header from "@/layouts/Header/Header";
 import Footer from "../../layouts/footer/Footer";
-import ItemsContainer from "@/pages/components/ItemsContainer";
+import ItemsContainer from "@/pages/components/ItemsContainer/ItemsContainer";
 import axios from "axios";
 import { useState } from "react";
 import useGenre from "@/hooks/[gener]";

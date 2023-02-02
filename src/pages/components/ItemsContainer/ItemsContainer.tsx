@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import SingleContent from "../../SingleContent";
+import SingleContent from "../../../SingleContent";
 import Pagination from "@mui/material/Pagination";
 import { useRouter } from "next/router";
-import Genres from "./Genres";
+import Genres from "../gener/Genres";
 import useGenre from "@/hooks/[gener]";
 
 interface Props {
