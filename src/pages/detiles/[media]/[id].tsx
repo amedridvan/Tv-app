@@ -16,11 +16,22 @@ import "keen-slider/keen-slider.min.css"
 // Import Swiper styles
 
 interface Props {
-  items: []; 
+  items: {
+    name:string ;
+    backdrop_path :string ;
+    title :string ;
+    first_air_date :string;
+    release_date :string; 
+    tagline :string;
+    overview :string ;
+    profile_path :string ;
+    id:number ;
+  }; 
   vidLink :string;
   casts: [];
   pages:string
 }
+
 
 const Detiles = ( props:Props) => {
   const items = props.items
