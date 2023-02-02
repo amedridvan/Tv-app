@@ -2,11 +2,14 @@ import React from 'react'
 import Link from 'next/link'
 const Footer = () => {
   return (
-    <div className='bg-black w-full h-[100px] text-white font-bold font-sans flex flex-col justify-center items-center   '>
+    <div className='p-3'>
+    <div className='bg-black w-full h-[100px] text-white font-bold font-sans flex flex-col justify-center items-center p-3 
+    rounded-md mt-[-15px]  '>
       <span className='uppercase '>Maded by 
         <Link className='hover:text-green-900' href='https://github.com/amedridvan' target="_blank" > ahmed</Link>
       </span>
       <span> 2023</span>
+    </div>
     </div>
   )
 }

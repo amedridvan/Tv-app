@@ -42,7 +42,7 @@ const Genres = ({
 
   return (
     <>
-    <div className="flex flex-row justify-center items-center flex-wrap bg-slate-800" style={{ padding: "6px 0" }}>
+    <div className="flex flex-row justify-center items-center flex-wrap bg-slate-800 rounded-md mb-2">
       {selectedGenres.map((genre) => (
         <div
         className='bg-stone-100 rounded-full p-2 cursor-pointer  hover:bg-pink-700  '

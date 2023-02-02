@@ -79,7 +79,9 @@ const ItemsContainer = (props: Props) => {
    
   return (
     <>
-      <h1 className="text-3xl text-white text-center font-bold uppercase font-sans mb-4 hover:text-green-900 bg-gray-900 ">
+    <div className='p-3 rounded-md mt-[-10px]'>
+      <h1 className="text-3xl text-white text-center font-bold uppercase font-sans mb-4 hover:text-green-900 bg-gray-900
+      rounded-md  ">
         movie
       </h1>
       <Genres 
@@ -91,7 +93,7 @@ const ItemsContainer = (props: Props) => {
         setPage={setPageno}
       />
       <div 
-      className="flex flex-row flex-wrap justify-around bg-gray-900"
+      className="flex flex-row flex-wrap justify-around bg-gray-900 rounded-md mb-2"
       > 
 
         {content?.map(function (item: any) {
@@ -108,13 +110,15 @@ const ItemsContainer = (props: Props) => {
           );
         })}
       </div>
-      <Pagination
+      <div>
+      <Pagination 
         onChange={(e:any ) =>app(e.target.textContent)}
-        className="flex justify-center items-center bg-gray-600 "
+        className="flex justify-center items-center bg-gray-600 rounded-md "
         count={paginationno}
         color="primary"
-       
       />
+      </div>
+      </div>
     </>
   );
 };

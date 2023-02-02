@@ -13,6 +13,7 @@ interface props{
    
 }
 
+
 const SingleContent = (items:props) => {
   const { push } = useRouter();
   function ShowDetiles (key:string,media:string){
@@ -21,7 +22,8 @@ const SingleContent = (items:props) => {
   const ImageURL =  items.poster ? img_300 + items.poster : unavailable;
   return (
     <>
-    <div onClick={()=> ShowDetiles(items.id ,items.media_type)} key={items.id} className="flex flex-col w-[46%] md:w-[23%] p-1 mx-0 my-1 bg-slate-900  relative rounded-xl font-serif
+    <div onClick={()=> ShowDetiles(items.id ,items.media_type)} key={items.id} 
+    className="flex flex-col w-[46%] md:w-[23%] p-1 mx-0 my-3 bg-gray-600  relative rounded-xl font-serif
     hover:bg-white hover:text-black  hover:cursor-pointer 
     ">
       < Badge badgeContent={ +items.vote_average} color={ +items.vote_average > 7 ? `primary`:`secondary`} />
