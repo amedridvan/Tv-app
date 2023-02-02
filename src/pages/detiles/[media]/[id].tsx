@@ -105,7 +105,7 @@ const Detiles = ( props:Props) => {
                     <i  className="text-xs text-white hover:text-blue-900 font-bold font-sans  md:text-xl  md:font-bold ">{items.tagline}</i>
                   )}
 
-                  <textarea rows="8" cols="50" 
+                  <textarea rows={8} cols={50} 
                   className="h-[40%] md:h-[60%] w-full bg-gray-700 text-white font-bold text-xl md:text-2xl  rounded-[10px]
                   p-4 mt-5  overflow-hidden  md:font-bold ">
                     {items.overview}
@@ -116,7 +116,11 @@ const Detiles = ( props:Props) => {
             </div>
               <h1 className=' text-center font-bold text-3xl font-sans uppercase my-3 hover:text-yellow-100 md:text-6xl '>actors</h1>
              <div ref={sliderRef} className="keen-slider">
-          {casts.map((item, idx) => (
+          {casts.map((item :{
+            id :string;
+            profile_path :string;
+            name:string ;
+          }, idx) => (
           
            <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx}`}   >
             <div className='flex flex-col justify-center items-center p-3  '>
@@ -158,8 +162,7 @@ const Detiles = ( props:Props) => {
 
 
 
-export const getServerSideProps: GetServerSideProps = async ({params}) => {
-
+export const getServerSideProps: GetServerSideProps = async ({params}:any) => {
 const { data: res  } = await axios.get(
     `https://api.themoviedb.org/3/${params.media}/${params.id}?api_key=c76f21405a6fbe2e74354773617a04b8&language=en-US`
   );
