@@ -5,10 +5,10 @@ import { useEffect } from "react";
 const Genres = ( {
   setSelectedGenres ,
   setGenres,
-  selectedGenres  ,
   type,
   setPage,
-  genres ,
+  selectedGenres,
+  genres
 } :any  ) => {
   const handleAdd = (genre :any) => {
     setSelectedGenres([...selectedGenres, genre]);
@@ -43,7 +43,7 @@ const Genres = ( {
   return (
     <>
     <div className="flex flex-row justify-center items-center flex-wrap bg-slate-900 rounded-md mb-2">
-      {selectedGenres.map((genre :any) => (
+      {selectedGenres ?.map((genre :any) => (
         <div
         className='bg-stone-500  rounded-full p-2 cursor-pointer  hover:bg-pink-700  '
           style={{ margin: 2 }}
@@ -53,7 +53,7 @@ const Genres = ( {
         {genre.name}
         </div>
       ))}
-      {genres.map((genre :any) => (
+      {genres?.map((genre :any) => (
         <div className='bg-stone-100 rounded-full  p-2 cursor-pointer hover:bg-green-500'
           style={{ margin: 2 }}
           key={genre.id}
