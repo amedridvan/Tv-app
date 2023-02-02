@@ -2,14 +2,14 @@ import axios from "axios";
 import { useEffect } from "react";
 
 
-const Genres = ({
+const Genres = ( {
   selectedGenres ,
-  setSelectedGenres,
+  setSelectedGenres ,
   genres,
   setGenres,
   type,
   setPage,
-}) => {
+} :any) => {
   const handleAdd = (genre :any) => {
     setSelectedGenres([...selectedGenres, genre]);
     setGenres(genres.filter((g: { id: any; }) => g.id !== genre.id));
