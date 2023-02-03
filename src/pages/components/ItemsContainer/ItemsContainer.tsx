@@ -29,8 +29,8 @@ const ItemsContainer = (props: Props) => {
   const { push } = useRouter();
   const [content, setContent] = useState([]);
   const [data, setdata] = useState([]);
-    const [genres, setGenres] = useState([]);
-    const [selectedGenres, setSelectedGenres] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
     const [pageno, setPageno] = useState(1)
     const [paginationno, setPaginationno] = useState(0)

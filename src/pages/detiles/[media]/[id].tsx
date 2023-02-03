@@ -124,9 +124,10 @@ const Detiles = ( props:Props) => {
           }, idx) => (
             
            <div key={item.id} id={item.id} className={`keen-slider__slide number-slide${idx} `}   >
-            <div className='flex flex-col justify-center items-center p-3  '>
+            <div className='flex flex-col justify-center items-center p-3    '>
           <Image className=" rounded-[50%]  border-pink-600 border-solid border-b-0 border-l-0 border-[5px] 
-          w-[150px] h-[150px] md:h-[350px] md:w-[300px] md:border-[10px] md:border-b-0 md:border-l-0 
+          w-[150px] h-[150px] md:h-[350px] md:w-[300px] md:border-[10px] md:border-b-0 md:border-l-0  lg:w-[450px]
+          lg:h-[400px]
            "
            src={item.profile_path ? `${img_300}/${item.profile_path}` : unavailable}
            height={200}
