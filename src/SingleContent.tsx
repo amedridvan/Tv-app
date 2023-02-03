@@ -24,7 +24,7 @@ const SingleContent = (items:props) => {
     <>
     <div onClick={()=> ShowDetiles(items.id ,items.media_type)} key={items.id} 
     className="flex flex-col w-[46%] md:w-[23%] lg:w-[18%] xl:w-[13%]   p-1 mx-0 my-3 bg-gray-600  relative rounded-xl font-serif
-    hover:bg-white hover:text-black  hover:cursor-pointer 
+    hover:bg-white hover:text-black  hover:cursor-pointer xl:text-6xl
     ">
       < Badge badgeContent={ +items.vote_average} color={ +items.vote_average > 7 ? `primary`:`secondary`} />
       <Image className="rounded-[10px] "
