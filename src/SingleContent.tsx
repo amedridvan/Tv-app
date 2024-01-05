@@ -23,7 +23,7 @@ const SingleContent = (items:props) => {
   return (
     <>
     <div onClick={()=> ShowDetiles(items.id ,items.media_type)} key={items.id} 
-    className="flex flex-col w-[46%] md:w-[23%] lg:w-[18%] xl:w-[13%]   p-1 mx-0 my-3 bg-gray-200  relative rounded-xl font-serif
+    className="flex flex-col w-[46%] md:w-[23%] lg:w-[18%] xl:w-[13%]   p-1 mx-0 my-3 bg-gray-600  relative rounded-xl font-serif
     hover:bg-white hover:text-black  hover:cursor-pointer 
     ">
       < Badge badgeContent={ +items.vote_average} color={ +items.vote_average > 7 ? `primary`:`secondary`} />
@@ -32,10 +32,10 @@ const SingleContent = (items:props) => {
       src={ImageURL} 
       width={400}
       height={300}/>
-     <b className="w-full  text-center text-xl py-[8px] px-0 text-sky-500 "> {items.title}</b>
-     <span className=" w-full   flex justify-between pb-[3px] pt-0  py-0 text-yellow-400 "> 
-      <span >{items.media_type}</span>
-      <span >{items.data}</span>
+     <b className="w-full text-center text-xl py-[8px] px-0 text-sky-500 "> {items.title}</b>
+     <span className=" w-full flex justify-between pb-[3px] pt-0  py-0 text-yellow-400 "> 
+      <p>{items.media_type}</p>
+      <p>{items.data}</p>
       </span>
       </div>
     </>
