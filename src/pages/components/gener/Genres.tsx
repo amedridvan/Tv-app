@@ -42,10 +42,10 @@ const Genres = ( {
   console.log(genres)
   return (
     <>
-    <div className="flex flex-row justify-center items-center flex-wrap bg-slate-900 rounded-md mb-2">
+    <div className="flex flex-row justify-center items-center flex-wrap bg-slate-900 rounded-md mb-2    ">
       {selectedGenres ?.map((genre :any) => (
         <div
-        className='bg-stone-500   rounded-full p-2 cursor-pointer  hover:bg-pink-700  '
+        className='bg-stone-500   rounded-full p-2 cursor-pointer  hover:bg-pink-600 md:text-xs lg:text-base xl:text-lg '
           style={{ margin: 2 }}
           key={genre.id}
           onClick={() => handleRemove(genre)}
