@@ -61,7 +61,7 @@ const ItemsContainer = (props: Props) => {
     }
     useEffect(()=>{
         console.log('Trending Component didupdate mount');
-        console.log('data', data.results)
+        console.log('data', data)
         GetDataTrending();
         //eslint-disable-next-line
     }, [pageno])
