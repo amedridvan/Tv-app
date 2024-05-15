@@ -32,7 +32,7 @@ const ItemsContainer = (props: Props) => {
 
     const [pageno, setPageno] = useState(1)
     const [paginationno, setPaginationno] = useState(0)
-    
+    const push =useRouter ;
 
     
     const genreforURL = useGenre(selectedGenres)
