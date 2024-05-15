@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { GetServerSideProps } from "next";
 import SingleContent from "../../../SingleContent";
 import Pagination from "@mui/material/Pagination";
 import { useRouter } from "next/router";
@@ -26,7 +25,6 @@ interface Props1 {
 
 const ItemsContainer = (props: Props) => {
   const { items } = props;
-  const { push } = useRouter();
   const [content, setContent] = useState([]);
   const [data, setdata] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -47,7 +45,6 @@ const ItemsContainer = (props: Props) => {
         setPaginationno(data.total_pages);
         setdata(data)
     }
-
     useEffect(()=>{
         console.log('Trending Component did mount');
         GetDataTrending();
@@ -64,7 +61,7 @@ const ItemsContainer = (props: Props) => {
     }
     useEffect(()=>{
         console.log('Trending Component didupdate mount');
-        console.log('data', data)
+        console.log('data', data.results)
         GetDataTrending();
         //eslint-disable-next-line
     }, [pageno])
@@ -76,7 +73,7 @@ const ItemsContainer = (props: Props) => {
     push(`/detiles/${media}/${key}`);
     
    }
-   
+  console.log( "content= ",content)
   return (
     <>
     <div className='p-3 rounded-md mt-[-10px]'>

@@ -23,7 +23,7 @@ const Genres = ( {
     setGenres([...genres, genre]);
     setPage(1);
   };
-
+  
   const fetchGenres = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/genre/${type}/list?api_key=c76f21405a6fbe2e74354773617a04b8&language=en-US`
