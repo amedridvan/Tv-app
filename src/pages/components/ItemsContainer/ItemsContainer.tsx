@@ -29,10 +29,9 @@ const ItemsContainer = (props: Props) => {
   const [data, setdata] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
-
-    const [pageno, setPageno] = useState(1)
-    const [paginationno, setPaginationno] = useState(0)
-    const push =useRouter ;
+const [pageno, setPageno] = useState(1)
+const [paginationno, setPaginationno] = useState(0)
+const {push}= useRouter ()
 
     
     const genreforURL = useGenre(selectedGenres)
